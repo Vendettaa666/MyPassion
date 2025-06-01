@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift | Elegant Passions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+
+        .page-banner {
+            height: 60vh;
+            background: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner-content {
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+            z-index: 2;
+            position: relative;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .drift-accent {
+            position: relative;
+            color: #ffffff;
+            display: inline-block;
+        }
+
+        .drift-accent::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .drift-container {
+            padding: 80px 0;
+        }
+
+        .drift-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .drift-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .drift-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .drift-intro p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .skew-section {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 80px;
+            background: #0f0f0f;
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skew-section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            color: #ffffff;
+            margin-left: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .title-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            opacity: 0.2;
+        }
+
+        .drift-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 30px;
+        }
+
+        .drift-card {
+            background: rgba(20, 20, 20, 0.7);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .drift-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .drift-card-content {
+            padding: 30px;
+        }
+
+        .drift-car-image {
+            height: 220px;
+            margin: -30px -30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drift-car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(0%);
+        }
+
+        .drift-card:hover .drift-car-image img {
+            transform: scale(1.05);
+        }
+
+        .drift-car-info h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .drift-car-info p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .drift-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+        }
+
+        .drift-spec {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.8rem;
+            color: #aaaaaa;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .techniques-section {
+            margin-bottom: 80px;
+        }
+
+        .technique-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .technique-card {
+            background: rgba(20, 20, 20, 0.7);
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .technique-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .technique-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+
+        .technique-icon i {
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .technique-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .technique-card p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .drift-video-section {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            box-shadow: none;
+            border: 1px solid #eaeaea;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 3rem;
+            }
+            
+            .drift-cards {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 50vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .drift-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .title-number {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h3 {
+                font-size: 1.8rem;
+            }
+            
+            .drift-cards,
+            .technique-cards {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 2rem;
+            }
+            
+            .drift-cards,
+            .technique-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="drift-page">
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><i class="fas fa-car-side"></i> Elegant Passions</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#categories">Categories</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-content" data-aos="fade-up">
+                <h1>DRIFT <span class="drift-accent">RACING</span></h1>
+                <p>Explore the thrilling world of controlled chaos, where driving skill meets artistic expression in a dance of power and precision.</p>
+            </div>
+        </section>
+
+        <section class="drift-container">
+            <div class="drift-intro" data-aos="fade-up">
+                <h2>The Art of Sliding</h2>
+                <p>Drifting is a driving technique where the driver intentionally oversteers, causing loss of traction in the rear wheels while maintaining control through the entire corner. What began as a racing technique in Japan has evolved into a worldwide motorsport that combines technical skill with artistic expression.</p>
+            </div>
+
+            <div class="skew-section">
+                <div class="skew-section-content">
+                    <div class="section-title" data-aos="fade-right">
+                        <div class="title-number">01</div>
+                        <h3>Legendary Drift Cars</h3>
+                    </div>
+                    <div class="drift-cards">
+                        <div class="drift-card" data-aos="fade-up">
+                            <div class="drift-card-content">
+                                <div class="drift-car-image">
+                                    <img src="../image/bmw-m5.jpg" alt="Nissan Silvia S15">
+                                </div>
+                                <div class="drift-car-info">
+                                    <h4>Nissan Silvia S15</h4>
+                                    <p>The Nissan Silvia S15 is one of the most iconic drift cars ever created. Its perfect balance of power, weight, and rear-wheel drive layout makes it a favorite among professional drifters worldwide.</p>
+                                    <div class="drift-specs">
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Engine</span>
+                                            <span class="spec-value">SR20DET</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Power</span>
+                                            <span class="spec-value">250+ HP</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Drive</span>
+                                            <span class="spec-value">RWD</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Year</span>
+                                            <span class="spec-value">1999-2002</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="drift-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="drift-card-content">
+                                <div class="drift-car-image">
+                                    <img src="image/bmw-m5.jpg" alt="Toyota AE86">
+                                </div>
+                                <div class="drift-car-info">
+                                    <h4>Toyota AE86</h4>
+                                    <p>Made famous by the Initial D anime series, the Toyota AE86 is legendary in the drift world. Despite its modest power, its lightweight chassis and perfect balance make it an excellent drift platform.</p>
+                                    <div class="drift-specs">
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Engine</span>
+                                            <span class="spec-value">4A-GE</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Power</span>
+                                            <span class="spec-value">130 HP</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Drive</span>
+                                            <span class="spec-value">RWD</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Year</span>
+                                            <span class="spec-value">1983-1987</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="drift-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="drift-card-content">
+                                <div class="drift-car-image">
+                                    <img src="image/bmw-m5.jpg" alt="Mazda RX-7 FD">
+                                </div>
+                                <div class="drift-car-info">
+                                    <h4>Mazda RX-7 FD</h4>
+                                    <p>The rotary-powered Mazda RX-7 FD is prized for its lightweight construction, perfect weight distribution, and unique engine character. Its aggressive styling makes it a standout in the drift scene.</p>
+                                    <div class="drift-specs">
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Engine</span>
+                                            <span class="spec-value">13B-REW</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Power</span>
+                                            <span class="spec-value">255+ HP</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Drive</span>
+                                            <span class="spec-value">RWD</span>
+                                        </div>
+                                        <div class="drift-spec">
+                                            <span class="spec-label">Year</span>
+                                            <span class="spec-value">1992-2002</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="techniques-section">
+                <div class="section-title" data-aos="fade-right" style="max-width: 1000px; margin: 0 auto 30px; padding: 0 20px;">
+                    <div class="title-number">02</div>
+                    <h3>Drift Techniques</h3>
+                </div>
+                <div class="technique-cards">
+                    <div class="technique-card" data-aos="fade-up">
+                        <div class="technique-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h4>Clutch Kick</h4>
+                        <p>The clutch kick technique involves quickly pressing and releasing the clutch pedal while the car is in gear. This momentarily disrupts power to the wheels, causing them to lose traction and initiate a drift.</p>
+                    </div>
+
+                    <div class="technique-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="technique-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4>Power Over</h4>
+                        <p>This technique involves applying enough throttle to break traction at the rear wheels. When entering a corner, the driver applies enough power to cause the rear wheels to spin faster than the speed of the car.</p>
+                    </div>
+
+                    <div class="technique-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="technique-icon">
+                            <i class="fas fa-hand-rock"></i>
+                        </div>
+                        <h4>Handbrake Entry</h4>
+                        <p>The driver pulls the handbrake while cornering to lock the rear wheels, causing them to lose traction. This is often used to initiate a drift when entering a corner at moderate speeds.</p>
+                    </div>
+
+                    <div class="technique-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="technique-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h4>Feint Drift</h4>
+                        <p>This technique involves steering quickly in the opposite direction of the turn before steering into the turn. This weight transfer helps initiate the drift by shifting the car's balance and breaking traction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-car-side"></i> Elegant Passions
+                </div>
+                <p>Created with <i class="fas fa-heart"></i> by Leo Satria</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+    </script>
+</body>
+</html> 

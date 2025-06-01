@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Gallery | Elegant Passions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .page-banner {
+            height: 60vh;
+            background: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            z-index: 2;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cat-accent {
+            background: linear-gradient(to right, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .cats-container {
+            padding: 80px 0;
+        }
+
+        .cats-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .cats-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cats-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .cats-intro p {
+            color: #ddd;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .cat-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .cat-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .cat-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(0%);
+        }
+
+        .cat-card:hover .cat-image img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .cat-info {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .cat-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cat-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .cat-card:hover .cat-info h3::after {
+            width: 100%;
+        }
+
+        .cat-info p {
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cat-facts {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .cat-facts ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .cat-facts li {
+            margin-bottom: 8px;
+        }
+
+        .cat-facts li:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .gallery-row {
+                flex-direction: column;
+            }
+            
+            .cat-card {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 60vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 3rem;
+            }
+            
+            .cats-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .cat-info h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cat-image {
+                height: 250px;
+            }
+            
+            .cat-facts {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="cats-page">
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><i class="fas fa-cat"></i> Elegant Passions</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#categories">Categories</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-content" data-aos="fade-up">
+                <h1>Feline <span class="cat-accent">Gallery</span></h1>
+                <p>Explore the grace, charm, and personality of cats through a curated collection of elegant black and white photography.</p>
+            </div>
+        </section>
+
+        <section class="cats-container">
+            <div class="cats-intro" data-aos="fade-up">
+                <h2>The Art of <span class="cat-accent">Feline Beauty</span></h2>
+                <p>Cats have captivated humans for millennia with their mysterious nature, graceful movements, and expressive personalities. This gallery celebrates their beauty through striking monochromatic photography that captures their essence.</p>
+            </div>
+
+            <div class="cat-gallery">
+                <!-- Walking Cat Photos -->
+                <div class="gallery-row">
+                    <div class="cat-card" data-aos="fade-up">
+                        <div class="cat-image">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043" alt="Elegant Cat Portrait">
+                        </div>
+                        <div class="cat-info">
+                            <h3>Elegant Portrait</h3>
+                            <p>The penetrating gaze of a cat reveals depth and intelligence that has fascinated humans throughout history. Their eyes, especially in black and white photography, seem to tell stories of ancient wisdom.</p>
+                            <div class="cat-facts">
+                                <ul>
+                                    <li>Cats can rotate their ears 180 degrees</li>
+                                    <li>A cat's nose print is unique, like a human's fingerprint</li>
+                                    <li>They can make over 100 vocal sounds, while dogs can only make about 10</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="cat-image">
+                            <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?q=80&w=2070" alt="Resting Cat">
+                        </div>
+                        <div class="cat-info">
+                            <h3>Peaceful Repose</h3>
+                            <p>Cats spend up to 16 hours a day sleeping, perfecting the art of relaxation. Their ability to find comfort in the most unusual positions showcases their incredible flexibility and adaptability.</p>
+                            <div class="cat-facts">
+                                <ul>
+                                    <li>Cats sleep for approximately 70% of their lives</li>
+                                    <li>A house cat's genome is 95.6% tiger</li>
+                                    <li>They have five toes on their front paws but only four on their back paws</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-row">
+                    <div class="cat-card" data-aos="fade-up">
+                        <div class="cat-image">
+                            <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=2020" alt="Curious Cat">
+                        </div>
+                        <div class="cat-info">
+                            <h3>Curious Nature</h3>
+                            <p>A cat's curiosity is legendary, driving them to explore every corner of their environment. This inquisitive spirit, captured in monochrome, highlights their alert posture and attentive expressions.</p>
+                            <div class="cat-facts">
+                                <ul>
+                                    <li>Cats have a field of vision of about 200 degrees (humans have 180)</li>
+                                    <li>Their whiskers help them determine if they can fit through an opening</li>
+                                    <li>A group of cats is called a "clowder"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="cat-image">
+                            <img src="https://images.unsplash.com/photo-1574144113084-b6f450cc5e0c?q=80&w=2064" alt="Playful Kitten">
+                        </div>
+                        <div class="cat-info">
+                            <h3>Playful Spirit</h3>
+                            <p>Kittens at play reveal the perfect combination of precision and joy. Their boundless energy and graceful movements make even the simplest games a display of natural athleticism and coordination.</p>
+                            <div class="cat-facts">
+                                <ul>
+                                    <li>Kittens can learn basic commands just like puppies</li>
+                                    <li>A cat can jump up to six times its length</li>
+                                    <li>They can run up to 30 mph (48 km/h) for short distances</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-cat"></i> Elegant Passions
+                </div>
+                <p>Created with <i class="fas fa-heart"></i> by Leo Satria</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+    </script>
+</body>
+</html> 

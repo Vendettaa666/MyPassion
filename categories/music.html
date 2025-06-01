@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music | Elegant Passions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            position: relative;
+        }
+
+        .page-banner {
+            height: 60vh;
+            background: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            z-index: 2;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .music-accent {
+            background: linear-gradient(to right, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .audio-equalizer {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 30px;
+            height: 50px;
+            align-items: flex-end;
+        }
+
+        .equalizer-bar {
+            width: 8px;
+            background: linear-gradient(to top, #ffffff, #cccccc);
+            border-radius: 5px;
+            animation: equalize 1.5s ease-in-out infinite;
+        }
+
+        .equalizer-bar:nth-child(1) { animation-delay: 0.2s; }
+        .equalizer-bar:nth-child(2) { animation-delay: 0.3s; }
+        .equalizer-bar:nth-child(3) { animation-delay: 0.1s; }
+        .equalizer-bar:nth-child(4) { animation-delay: 0.4s; }
+        .equalizer-bar:nth-child(5) { animation-delay: 0.2s; }
+        .equalizer-bar:nth-child(6) { animation-delay: 0.3s; }
+        .equalizer-bar:nth-child(7) { animation-delay: 0.1s; }
+        .equalizer-bar:nth-child(8) { animation-delay: 0.4s; }
+
+        @keyframes equalize {
+            0%, 100% { height: 15px; }
+            50% { height: 45px; }
+        }
+
+        .music-container {
+            padding: 80px 0;
+        }
+
+        .music-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .music-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .music-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .music-intro p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .playlist-section {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            display: inline-block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            width: 100px;
+        }
+
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .playlist-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .playlist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .playlist-image {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .playlist-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(0%);
+        }
+
+        .playlist-card:hover .playlist-image img {
+            transform: scale(1.05);
+        }
+
+        .playlist-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .playlist-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .playlist-content p {
+            color: #cccccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .playlist-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .playlist-genre {
+            font-size: 0.9rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .playlist-genre i {
+            margin-right: 5px;
+        }
+
+        .playlist-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border-radius: 50%;
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .playlist-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .instrument-section {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .instrument-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .instrument-item {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .instrument-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .instrument-icon {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .instrument-item:hover .instrument-icon {
+            transform: scale(1.2);
+        }
+
+        .instrument-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .instrument-desc {
+            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .quote-section {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 40px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 4rem;
+            color: #ffffff;
+            opacity: 0.3;
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote-text::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .quote-text::after {
+            bottom: -40px;
+            right: 0;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: #cccccc;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .playlist-image {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 50vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .music-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .quote-text {
+                font-size: 1.4rem;
+                padding: 0 30px;
+            }
+            
+            .playlist-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner-content p {
+                font-size: 1rem;
+            }
+            
+            .playlist-grid,
+            .instrument-list {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            
+            .quote-text {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body class="music-page">
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><i class="fas fa-music"></i> Elegant Passions</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#categories">Categories</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-content" data-aos="fade-up">
+                <h1>Instrumental <span class="music-accent">Music</span></h1>
+                <p>Discover the beauty of instrumental compositions that evoke emotions, create atmospheres, and tell stories without the need for words.</p>
+                <div class="audio-equalizer">
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                    <div class="equalizer-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="music-container">
+            <div class="music-intro" data-aos="fade-up">
+                <h2>The Art of <span class="music-accent">Sound</span></h2>
+                <p>Instrumental music allows us to experience emotions in their purest form, transcending language barriers and cultural differences. From classical compositions to modern ambient soundscapes, these works showcase the remarkable ability of melody, rhythm, and harmony to move the human spirit.</p>
+            </div>
+
+            <div class="playlist-section">
+                <h3 class="section-title" data-aos="fade-right">Relaxing Playlists</h3>
+                <div class="playlist-grid">
+                    <div class="playlist-card" data-aos="fade-up">
+                        <div class="playlist-image">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070" alt="Piano Compositions">
+                        </div>
+                        <div class="playlist-content">
+                            <h3>Piano Solos</h3>
+                            <p>A collection of beautiful and introspective piano compositions from artists like Ludovico Einaudi, Yiruma, and Nils Frahm that create a serene atmosphere perfect for reflection and relaxation.</p>
+                            <div class="playlist-meta">
+                                <div class="playlist-genre">
+                                    <i class="fas fa-headphones"></i> Classical/Modern
+                                </div>
+                                <a href="#" class="playlist-button">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="playlist-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="playlist-image">
+                            <img src="https://images.unsplash.com/photo-1446057032654-9d8885db76c6?q=80&w=2070" alt="Ambient Music">
+                        </div>
+                        <div class="playlist-content">
+                            <h3>Ambient Soundscapes</h3>
+                            <p>Immerse yourself in atmospheric textures and gentle soundscapes from artists like Brian Eno, Jon Hopkins, and Boards of Canada that blend natural sounds with subtle electronic elements.</p>
+                            <div class="playlist-meta">
+                                <div class="playlist-genre">
+                                    <i class="fas fa-headphones"></i> Ambient/Electronic
+                                </div>
+                                <a href="#" class="playlist-button">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="playlist-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="playlist-image">
+                            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=2070" alt="Acoustic Guitar">
+                        </div>
+                        <div class="playlist-content">
+                            <h3>Acoustic Guitar</h3>
+                            <p>Beautiful finger-style guitar compositions from artists like Antoine Dufour, Andy McKee, and Tommy Emmanuel that showcase the incredible expressiveness of the acoustic guitar.</p>
+                            <div class="playlist-meta">
+                                <div class="playlist-genre">
+                                    <i class="fas fa-headphones"></i> Acoustic/Folk
+                                </div>
+                                <a href="#" class="playlist-button">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="playlist-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="playlist-image">
+                            <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=2070" alt="Lo-Fi Beats">
+                        </div>
+                        <div class="playlist-content">
+                            <h3>Lo-Fi Beats</h3>
+                            <p>Mellow hip-hop inspired instrumental beats with jazz elements and vinyl crackle, perfect for focusing, studying, or creating a calm atmosphere for work or relaxation.</p>
+                            <div class="playlist-meta">
+                                <div class="playlist-genre">
+                                    <i class="fas fa-headphones"></i> Lo-Fi/Hip-Hop
+                                </div>
+                                <a href="#" class="playlist-button">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instrument-section">
+                <h3 class="section-title" data-aos="fade-right">Beautiful Instruments</h3>
+                <div class="instrument-list">
+                    <div class="instrument-item" data-aos="fade-up">
+                        <div class="instrument-icon">
+                            <i class="fas fa-drum"></i>
+                        </div>
+                        <h4 class="instrument-name">Piano</h4>
+                        <p class="instrument-desc">The piano's versatility allows it to express a wide range of emotions, from delicate melancholy to triumphant joy, making it one of the most expressive solo instruments.</p>
+                    </div>
+
+                    <div class="instrument-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="instrument-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h4 class="instrument-name">Acoustic Guitar</h4>
+                        <p class="instrument-desc">With its warm tone and intimate sound, the acoustic guitar creates music that feels personal and direct, capable of both rhythmic drive and delicate melodies.</p>
+                    </div>
+
+                    <div class="instrument-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="instrument-icon">
+                            <i class="fas fa-compact-disc"></i>
+                        </div>
+                        <h4 class="instrument-name">Violin</h4>
+                        <p class="instrument-desc">The violin's singing tone can mimic the human voice, allowing it to convey deep emotions through its expressive vibrato and dynamic range.</p>
+                    </div>
+
+                    <div class="instrument-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="instrument-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h4 class="instrument-name">Cello</h4>
+                        <p class="instrument-desc">With its rich, deep resonance, the cello produces tones closest to the human voice range, creating profoundly moving and soulful expressions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-section" data-aos="fade-up">
+                <div class="quote-text">
+                    Music expresses that which cannot be put into words and that which cannot remain silent.
+                </div>
+                <div class="quote-author">
+                    - Victor Hugo
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-music"></i> Elegant Passions
+                </div>
+                <p>Created with <i class="fas fa-heart"></i> by Leo Satria</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+    </script>
+</body>
+</html> 

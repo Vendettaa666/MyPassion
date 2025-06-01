@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorcycles | Elegant Passions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .page-banner {
+            height: 60vh;
+            background: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner-content {
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+            z-index: 2;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .motorcycle-container {
+            padding: 80px 0;
+        }
+
+        .motorcycle-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .motorcycle-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .motorcycle-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .motorcycle-intro p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .motorcycle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .motorcycle-card {
+            background: rgba(20, 20, 20, 0.7);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .motorcycle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .motorcycle-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .motorcycle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(0%);
+        }
+
+        .motorcycle-card:hover .motorcycle-image img {
+            transform: scale(1.05);
+        }
+
+        .motorcycle-content {
+            padding: 30px;
+        }
+
+        .motorcycle-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .motorcycle-content p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+        }
+
+        .specs-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #aaaaaa;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .specs-list .spec-value {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .ducati-section {
+            background: #0f0f0f;
+            padding: 80px 0;
+            margin: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history-section {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .history-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .history-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .history-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .history-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .history-text p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .history-image {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0%);
+            transition: transform 0.6s ease;
+        }
+
+        .history-image:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .motorcycle-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .history-text, .history-image {
+                flex: 100%;
+            }
+            
+            .history-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 50vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .motorcycle-intro h2,
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .motorcycle-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .history-text h3 {
+                font-size: 1.8rem;
+            }
+            
+            .history-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .motorcycle-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner-content h1 {
+                font-size: 2rem;
+            }
+            
+            .history-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body class="motorcycles-page">
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><i class="fas fa-motorcycle"></i> Elegant Passions</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#categories">Categories</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-content" data-aos="fade-up">
+                <h1>Motorcycles</h1>
+                <p>Explore the world of high-performance motorcycles, from Italian masterpieces to Japanese engineering marvels.</p>
+            </div>
+        </section>
+
+        <section class="motorcycle-container">
+            <div class="motorcycle-intro" data-aos="fade-up">
+                <h2>Power and Freedom</h2>
+                <p>Motorcycles represent the perfect blend of power, engineering, and freedom. They offer an unparalleled connection between rider and machine, creating an experience that goes beyond mere transportation.</p>
+            </div>
+
+            <div class="ducati-section">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 class="section-title" data-aos="fade-up">Ducati Collection</h2>
+                </div>
+            <div class="motorcycle-grid">
+                <div class="motorcycle-card" data-aos="fade-up">
+                    <div class="motorcycle-image">
+                            <img src="image/ducati-panigale.jpg" alt="Ducati Panigale V4">
+                        </div>
+                        <div class="motorcycle-content">
+                            <h3>Ducati Panigale V4</h3>
+                            <p>The Ducati Panigale V4 represents the pinnacle of sports bike technology, transferring MotoGP engineering to a road-legal machine.</p>
+                            <ul class="specs-list">
+                                <li><span>Engine</span> <span class="spec-value">1,103cc V4</span></li>
+                                <li><span>Power</span> <span class="spec-value">214 hp</span></li>
+                                <li><span>Weight</span> <span class="spec-value">175 kg (dry)</span></li>
+                                <li><span>Top Speed</span> <span class="spec-value">300+ km/h</span></li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="motorcycle-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="motorcycle-image">
+                            <img src="image/motorcycles.jpg" alt="Ducati Monster">
+                    </div>
+                    <div class="motorcycle-content">
+                            <h3>Ducati Monster</h3>
+                            <p>The Ducati Monster created the "naked bike" segment and has become an icon in motorcycle design, combining simplicity with performance.</p>
+                            <ul class="specs-list">
+                                <li><span>Engine</span> <span class="spec-value">937cc L-Twin</span></li>
+                                <li><span>Power</span> <span class="spec-value">111 hp</span></li>
+                                <li><span>Weight</span> <span class="spec-value">166 kg (dry)</span></li>
+                                <li><span>Top Speed</span> <span class="spec-value">230 km/h</span></li>
+                            </ul>
+                            </div>
+                            </div>
+
+                    <div class="motorcycle-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="motorcycle-image">
+                            <img src="image/motorcycles.jpg" alt="Ducati Multistrada V4">
+                        </div>
+                        <div class="motorcycle-content">
+                            <h3>Ducati Multistrada V4</h3>
+                            <p>The Multistrada V4 redefines the adventure bike category, with cutting-edge technology and versatile performance for any road condition.</p>
+                            <ul class="specs-list">
+                                <li><span>Engine</span> <span class="spec-value">1,158cc V4</span></li>
+                                <li><span>Power</span> <span class="spec-value">170 hp</span></li>
+                                <li><span>Weight</span> <span class="spec-value">215 kg (dry)</span></li>
+                                <li><span>Top Speed</span> <span class="spec-value">250 km/h</span></li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="history-section">
+                <div class="history-content">
+                    <div class="history-text" data-aos="fade-right">
+                        <h3>Ducati Heritage</h3>
+                        <p>Founded in 1926 in Bologna, Italy, Ducati began as a company producing radio components before turning to motorcycle production after World War II. Their first motorcycle, the Cucciolo, was a small engine attached to a bicycle.</p>
+                        <p>Throughout the decades, Ducati established itself as a premium motorcycle manufacturer known for innovative engineering, distinctive design, and racing success. The brand has become synonymous with Italian craftsmanship and passion for performance.</p>
+                        <p>Today, Ducati continues to push boundaries in motorcycle technology while maintaining their commitment to style, performance, and the unmistakable sound of their engines.</p>
+                    </div>
+                    <div class="history-image" data-aos="fade-left">
+                        <img src="image/motorcycles.jpg" alt="Vintage Ducati motorcycles">
+                    </div>
+                    </div>
+                </div>
+
+            <div style="text-align: center; margin: 60px auto 40px;">
+                <h2 class="section-title" data-aos="fade-up">Japanese Excellence</h2>
+            </div>
+            <div class="motorcycle-grid">
+                <div class="motorcycle-card" data-aos="fade-up">
+                    <div class="motorcycle-image">
+                        <img src="image/motorcycles.jpg" alt="Honda CBR1000RR-R Fireblade">
+                    </div>
+                    <div class="motorcycle-content">
+                        <h3>Honda CBR1000RR-R</h3>
+                        <p>The Honda CBR1000RR-R Fireblade represents Japanese engineering precision with class-leading power-to-weight ratio and aerodynamics.</p>
+                        <ul class="specs-list">
+                            <li><span>Engine</span> <span class="spec-value">1,000cc Inline-4</span></li>
+                            <li><span>Power</span> <span class="spec-value">217 hp</span></li>
+                            <li><span>Weight</span> <span class="spec-value">201 kg (wet)</span></li>
+                            <li><span>Top Speed</span> <span class="spec-value">299 km/h</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="motorcycle-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="motorcycle-image">
+                        <img src="image/motorcycles.jpg" alt="Yamaha YZF-R1">
+                    </div>
+                    <div class="motorcycle-content">
+                        <h3>Yamaha YZF-R1</h3>
+                        <p>The Yamaha R1 combines racing technology with street usability, featuring a MotoGP-derived crossplane crankshaft engine for exceptional handling.</p>
+                        <ul class="specs-list">
+                            <li><span>Engine</span> <span class="spec-value">998cc Inline-4</span></li>
+                            <li><span>Power</span> <span class="spec-value">200 hp</span></li>
+                            <li><span>Weight</span> <span class="spec-value">201 kg (wet)</span></li>
+                            <li><span>Top Speed</span> <span class="spec-value">299 km/h</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="motorcycle-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="motorcycle-image">
+                        <img src="image/motorcycles.jpg" alt="Suzuki GSX-R1000R">
+                    </div>
+                    <div class="motorcycle-content">
+                        <h3>Suzuki GSX-R1000R</h3>
+                        <p>The Suzuki GSX-R1000R continues the legacy of the legendary GSX-R line, balancing power delivery with superlative handling.</p>
+                        <ul class="specs-list">
+                            <li><span>Engine</span> <span class="spec-value">999.8cc Inline-4</span></li>
+                            <li><span>Power</span> <span class="spec-value">202 hp</span></li>
+                            <li><span>Weight</span> <span class="spec-value">203 kg (wet)</span></li>
+                            <li><span>Top Speed</span> <span class="spec-value">299 km/h</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-motorcycle"></i> Elegant Passions
+                </div>
+                <p>Created with <i class="fas fa-heart"></i> by Leo Satria</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy | Elegant Passions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .page-banner {
+            height: 60vh;
+            background: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            z-index: 2;
+            position: relative;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cosmic-text {
+            background: linear-gradient(to right, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .astronomy-container {
+            padding: 80px 0;
+        }
+
+        .astronomy-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .astronomy-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .astronomy-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .astronomy-intro p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gallery-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .galaxy-showcase {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 80px;
+        }
+
+        .showcase-header {
+            margin-bottom: 40px;
+            border-left: 2px solid #ffffff;
+            padding-left: 20px;
+        }
+
+        .showcase-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .showcase-header p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            max-width: 700px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .galaxy-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 20px;
+        }
+
+        .galaxy-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .galaxy-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .galaxy-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(0%);
+        }
+
+        .galaxy-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .galaxy-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+            transform: translateY(70px);
+            transition: transform 0.4s ease;
+        }
+
+        .galaxy-item:hover .galaxy-info {
+            transform: translateY(0);
+        }
+
+        .galaxy-info h4 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .galaxy-info p {
+            color: #cccccc;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease 0.1s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .galaxy-item:hover .galaxy-info p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .galaxy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #ffffff;
+            color: #0a0a0a;
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease 0.2s;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 3px;
+        }
+
+        .galaxy-item:hover .galaxy-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .galaxy-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .galaxy-item:nth-child(1) {
+            grid-column: span 8;
+            grid-row: span 2;
+        }
+
+        .galaxy-item:nth-child(2) {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .galaxy-item:nth-child(3) {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .galaxy-item:nth-child(4) {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .galaxy-item:nth-child(5) {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+        
+        .phenomenon-section {
+            background: #0f0f0f;
+            padding: 80px 0;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .phenomenon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .phenomenon-card {
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phenomenon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .phenomenon-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phenomenon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(0%);
+        }
+
+        .phenomenon-card:hover .phenomenon-image img {
+            transform: scale(1.05);
+        }
+
+        .phenomenon-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phenomenon-content h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .phenomenon-content h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .phenomenon-card:hover .phenomenon-content h4::after {
+            width: 60px;
+        }
+
+        .phenomenon-content p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .fact-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            margin-top: auto;
+            font-family: 'Montserrat', sans-serif;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quote-section {
+            max-width: 800px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 40px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 4rem;
+            color: #ffffff;
+            opacity: 0.3;
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote-text::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .quote-text::after {
+            bottom: -40px;
+            right: 0;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: #cccccc;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .galaxy-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .galaxy-item:nth-child(1) {
+                grid-column: span 6;
+                grid-row: span 1;
+            }
+            
+            .galaxy-item:nth-child(2),
+            .galaxy-item:nth-child(3),
+            .galaxy-item:nth-child(4),
+            .galaxy-item:nth-child(5) {
+                grid-column: span 3;
+                grid-row: span 1;
+            }
+            
+            .quote-text {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 50vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .astronomy-intro h2,
+            .showcase-header h3 {
+                font-size: 2rem;
+            }
+            
+            .galaxy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .galaxy-item:nth-child(1),
+            .galaxy-item:nth-child(2),
+            .galaxy-item:nth-child(3),
+            .galaxy-item:nth-child(4),
+            .galaxy-item:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 1;
+                height: 250px;
+            }
+            
+            .phenomenon-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-text {
+                font-size: 1.2rem;
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .galaxy-item {
+                height: 200px;
+            }
+            
+            .quote-text {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body class="astronomy-page">
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><i class="fas fa-moon"></i> Elegant Passions</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#categories">Categories</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-content" data-aos="fade-up">
+                <h1>Cosmic <span class="cosmic-text">Wonders</span></h1>
+                <p>Explore the breathtaking beauty of our universe – from distant galaxies to celestial phenomena that have captivated humanity for millennia.</p>
+            </div>
+        </section>
+
+        <section class="astronomy-container">
+            <div class="astronomy-intro" data-aos="fade-up">
+                <h2>Beyond Our World</h2>
+                <p>Astronomy connects us to the infinite cosmos, revealing the spectacular beauty and profound mysteries of our universe. From the birth of stars to the dance of galaxies, the night sky tells a story billions of years in the making.</p>
+            </div>
+
+            <div class="gallery-wrapper">
+                <div class="galaxy-showcase">
+                    <div class="showcase-header" data-aos="fade-right">
+                        <h3>Galactic Marvels</h3>
+                        <p>Galaxies are vast collections of stars, gas, and dust bound together by gravity. Their diverse forms and structures showcase the dynamic nature of our universe.</p>
+                    </div>
+                    <div class="galaxy-grid">
+                        <div class="galaxy-item" data-aos="fade-up">
+                            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2022" alt="Andromeda Galaxy">
+                            <div class="galaxy-info">
+                                <h4>Andromeda Galaxy</h4>
+                                <p>Our nearest major galactic neighbor, Andromeda is a spiral galaxy approximately 2.5 million light-years from Earth. It's on a collision course with our Milky Way.</p>
+                                <a href="#" class="galaxy-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="galaxy-item" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=2074" alt="Whirlpool Galaxy">
+                            <div class="galaxy-info">
+                                <h4>Whirlpool Galaxy</h4>
+                                <p>Also known as M51, this grand-design spiral galaxy features prominent and well-defined spiral arms, making it a favorite target for astronomers.</p>
+                                <a href="#" class="galaxy-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="galaxy-item" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://images.unsplash.com/photo-1537420327992-d6e192287183?q=80&w=2034" alt="Sombrero Galaxy">
+                            <div class="galaxy-info">
+                                <h4>Sombrero Galaxy</h4>
+                                <p>Named for its resemblance to a hat, this distinctive galaxy features a bright nucleus, an unusually large central bulge, and a prominent dust lane.</p>
+                                <a href="#" class="galaxy-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="galaxy-item" data-aos="fade-up" data-aos-delay="300">
+                            <img src="https://images.unsplash.com/photo-1614642264762-d0a3b8bf3700?q=80&w=2080" alt="Triangulum Galaxy">
+                            <div class="galaxy-info">
+                                <h4>Triangulum Galaxy</h4>
+                                <p>The third-largest member of our Local Group, this spiral galaxy is remarkable for its high rate of star formation and numerous star-forming regions.</p>
+                                <a href="#" class="galaxy-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="galaxy-item" data-aos="fade-up" data-aos-delay="400">
+                            <img src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?q=80&w=1959" alt="Centaurus A">
+                            <div class="galaxy-info">
+                                <h4>Centaurus A</h4>
+                                <p>A peculiar galaxy featuring a dramatic dust lane across its center, Centaurus A is one of the closest radio galaxies to Earth with an active galactic nucleus.</p>
+                                <a href="#" class="galaxy-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phenomenon-section">
+                    <div class="showcase-header" style="max-width: 1200px; margin: 0 auto 40px; padding: 0 20px;">
+                        <h3 data-aos="fade-right">Celestial Phenomena</h3>
+                        <p data-aos="fade-right" data-aos-delay="100">Our universe is filled with spectacular events and formations that demonstrate the dynamic and ever-changing nature of space.</p>
+                    </div>
+                    <div class="phenomenon-grid">
+                        <div class="phenomenon-card" data-aos="fade-up">
+                            <div class="phenomenon-image">
+                                <img src="https://images.unsplash.com/photo-1579613174954-37ba6c310e48?q=80&w=2070" alt="Supernova">
+                            </div>
+                            <div class="phenomenon-content">
+                                <h4>Supernovae</h4>
+                                <p>The explosive death of a star, supernovae are among the most energetic events in the universe. They can briefly outshine entire galaxies and are responsible for creating many of the elements found on Earth.</p>
+                                <span class="fact-badge">Can be visible during daytime</span>
+                            </div>
+                        </div>
+                        <div class="phenomenon-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="phenomenon-image">
+                                <img src="https://images.unsplash.com/photo-1605704311533-cae6d8b05981?q=80&w=2069" alt="Black Hole">
+                            </div>
+                            <div class="phenomenon-content">
+                                <h4>Black Holes</h4>
+                                <p>Regions of spacetime where gravity is so strong that nothing, not even light, can escape. Despite their invisible nature, black holes can be detected by their influence on nearby matter and radiation.</p>
+                                <span class="fact-badge">Millions exist in our galaxy alone</span>
+                            </div>
+                        </div>
+                        <div class="phenomenon-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="phenomenon-image">
+                                <img src="https://images.unsplash.com/photo-1624138784701-b8576607c1d9?q=80&w=2066" alt="Nebula">
+                            </div>
+                            <div class="phenomenon-content">
+                                <h4>Nebulae</h4>
+                                <p>Giant clouds of gas and dust in space. Some nebulae are regions where new stars are being formed, while others are the remains of dying or exploded stars. Their stunning colors and shapes make them popular targets for observation.</p>
+                                <span class="fact-badge">Stellar nurseries</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-section" data-aos="fade-up">
+                <div class="quote-text">
+                    The cosmos is within us. We are made of star-stuff. We are a way for the universe to know itself.
+                </div>
+                <div class="quote-author">
+                    - Carl Sagan
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-moon"></i> Elegant Passions
+                </div>
+                <p>Created with <i class="fas fa-heart"></i> by Leo Satria</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+
+        // Add parallax effect to galaxy items
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            document.querySelectorAll('.galaxy-item').forEach(item => {
+                const speed = 0.05;
+                const offset = item.offsetTop;
+                item.style.backgroundPositionY = `${(scrollY - offset) * speed}px`;
+            });
+        });
+    </script>
+</body>
+</html> 

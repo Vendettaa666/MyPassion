@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Languages | Elegant Passions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            position: relative;
+        }
+
+        .page-banner {
+            height: 60vh;
+            background: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            z-index: 2;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .lang-accent {
+            background: linear-gradient(to right, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .language-container {
+            padding: 80px 0;
+        }
+
+        .language-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .language-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .language-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .language-intro p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .language-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .language-header {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .language-header h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .language-native {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-style: italic;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .language-details {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .language-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .language-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+
+        .language-info p {
+            color: #cccccc;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .language-stats {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background: rgba(15, 15, 15, 0.7);
+        }
+
+        .stat-item {
+            margin-bottom: 20px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .language-phrases {
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .phrases-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .phrase-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .phrase-table th,
+        .phrase-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .phrase-table th {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phrase-table td {
+            color: #cccccc;
+        }
+
+        .phrase-original {
+            font-style: italic;
+            color: #ffffff;
+        }
+
+        .quote-section {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 40px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 4rem;
+            color: #ffffff;
+            opacity: 0.3;
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote-text::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .quote-text::after {
+            bottom: -40px;
+            right: 0;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: #cccccc;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .language-header h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 50vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .language-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .language-card {
+                margin-bottom: 40px;
+            }
+            
+            .language-header {
+                padding: 25px;
+            }
+            
+            .language-info, 
+            .language-stats {
+                padding: 25px;
+            }
+            
+            .quote-text {
+                font-size: 1.4rem;
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner-content p {
+                font-size: 1rem;
+            }
+            
+            .language-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .language-native {
+                font-size: 1rem;
+            }
+            
+            .language-info p {
+                font-size: 0.95rem;
+            }
+            
+            .quote-text {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body class="languages-page">
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><i class="fas fa-language"></i> Elegant Passions</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#categories">Categories</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-content" data-aos="fade-up">
+                <h1>World <span class="lang-accent">Languages</span></h1>
+                <p>Explore the beauty and diversity of languages from around the world, each offering a unique window into different cultures and ways of thinking.</p>
+            </div>
+        </section>
+
+        <section class="language-container">
+            <div class="language-intro" data-aos="fade-up">
+                <h2>Linguistic <span class="lang-accent">Journey</span></h2>
+                <p>Language is more than just a means of communication – it's a reflection of culture, history, and worldview. Learning a new language opens doors to understanding different perspectives and connecting with people across cultures in meaningful ways.</p>
+            </div>
+
+            <div class="language-wrapper">
+                <div class="language-card" data-aos="fade-up">
+                    <div class="language-header">
+                        <h3>Spanish</h3>
+                        <div class="language-native">Español</div>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-info">
+                            <p>Spanish is one of the world's most widely spoken languages, with over 460 million native speakers. As a Romance language descended from Latin, it shares many similarities with Portuguese, French, and Italian.</p>
+                            <p>Known for its melodic sound and regular pronunciation rules, Spanish is often considered one of the more accessible languages for English speakers to learn. Its rich literary tradition includes writers like Cervantes, Gabriel García Márquez, and Isabel Allende.</p>
+                        </div>
+                        <div class="language-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">Native Speakers</div>
+                                <div class="stat-value">460+ million</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Official In</div>
+                                <div class="stat-value">20 countries</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Language Family</div>
+                                <div class="stat-value">Romance (Indo-European)</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Writing System</div>
+                                <div class="stat-value">Latin alphabet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="language-phrases">
+                        <h4 class="phrases-title">Common Phrases</h4>
+                        <table class="phrase-table">
+                            <thead>
+                                <tr>
+                                    <th>English</th>
+                                    <th>Spanish</th>
+                                    <th>Pronunciation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hello</td>
+                                    <td class="phrase-original">Hola</td>
+                                    <td>oh-lah</td>
+                                </tr>
+                                <tr>
+                                    <td>Thank you</td>
+                                    <td class="phrase-original">Gracias</td>
+                                    <td>grah-see-ahs</td>
+                                </tr>
+                                <tr>
+                                    <td>How are you?</td>
+                                    <td class="phrase-original">¿Cómo estás?</td>
+                                    <td>koh-moh eh-stahs</td>
+                                </tr>
+                                <tr>
+                                    <td>Goodbye</td>
+                                    <td class="phrase-original">Adiós</td>
+                                    <td>ah-dee-ohs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="language-card" data-aos="fade-up">
+                    <div class="language-header">
+                        <h3>Russian</h3>
+                        <div class="language-native">Русский язык</div>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-info">
+                            <p>Russian is the largest native language in Europe and one of the six official languages of the United Nations. It belongs to the East Slavic branch of the Indo-European language family and is written using the Cyrillic alphabet.</p>
+                            <p>Russian is known for its complex grammar with six cases, three genders, and flexible word order. Its literature includes works by some of the world's greatest authors, including Tolstoy, Dostoevsky, and Chekhov.</p>
+                        </div>
+                        <div class="language-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">Native Speakers</div>
+                                <div class="stat-value">150+ million</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Official In</div>
+                                <div class="stat-value">4 countries</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Language Family</div>
+                                <div class="stat-value">East Slavic (Indo-European)</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Writing System</div>
+                                <div class="stat-value">Cyrillic alphabet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="language-phrases">
+                        <h4 class="phrases-title">Common Phrases</h4>
+                        <table class="phrase-table">
+                            <thead>
+                                <tr>
+                                    <th>English</th>
+                                    <th>Russian</th>
+                                    <th>Pronunciation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hello</td>
+                                    <td class="phrase-original">Здравствуйте</td>
+                                    <td>zdrah-stvooy-tye</td>
+                                </tr>
+                                <tr>
+                                    <td>Thank you</td>
+                                    <td class="phrase-original">Спасибо</td>
+                                    <td>spah-see-boh</td>
+                                </tr>
+                                <tr>
+                                    <td>How are you?</td>
+                                    <td class="phrase-original">Как дела?</td>
+                                    <td>kahk dee-lah</td>
+                                </tr>
+                                <tr>
+                                    <td>Goodbye</td>
+                                    <td class="phrase-original">До свидания</td>
+                                    <td>dah svee-dah-nee-ye</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="language-card" data-aos="fade-up">
+                    <div class="language-header">
+                        <h3>Portuguese (Brazilian)</h3>
+                        <div class="language-native">Português Brasileiro</div>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-info">
+                            <p>Brazilian Portuguese is the variant of Portuguese spoken in Brazil, the largest country in South America. While sharing roots with European Portuguese, it has distinct pronunciation, vocabulary, and some grammatical differences.</p>
+                            <p>The language has a melodic quality with a rich system of vowel sounds. Brazilian culture has given the world samba music, bossa nova, and writers like Jorge Amado and Paulo Coelho.</p>
+                        </div>
+                        <div class="language-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">Native Speakers</div>
+                                <div class="stat-value">210+ million</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Official In</div>
+                                <div class="stat-value">Brazil</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Language Family</div>
+                                <div class="stat-value">Romance (Indo-European)</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Writing System</div>
+                                <div class="stat-value">Latin alphabet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="language-phrases">
+                        <h4 class="phrases-title">Common Phrases</h4>
+                        <table class="phrase-table">
+                            <thead>
+                                <tr>
+                                    <th>English</th>
+                                    <th>Brazilian Portuguese</th>
+                                    <th>Pronunciation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hello</td>
+                                    <td class="phrase-original">Olá</td>
+                                    <td>oh-LAH</td>
+                                </tr>
+                                <tr>
+                                    <td>Thank you</td>
+                                    <td class="phrase-original">Obrigado/Obrigada</td>
+                                    <td>oh-bree-GAH-doo/oh-bree-GAH-dah</td>
+                                </tr>
+                                <tr>
+                                    <td>How are you?</td>
+                                    <td class="phrase-original">Como vai?</td>
+                                    <td>KOH-moh vye</td>
+                                </tr>
+                                <tr>
+                                    <td>Goodbye</td>
+                                    <td class="phrase-original">Tchau</td>
+                                    <td>chow</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-section" data-aos="fade-up">
+                <div class="quote-text">
+                    A different language is a different vision of life.
+                </div>
+                <div class="quote-author">
+                    - Federico Fellini
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-language"></i> Elegant Passions
+                </div>
+                <p>Created with <i class="fas fa-heart"></i> by Leo Satria</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true
+        });
+    </script>
+</body>
+</html> 
