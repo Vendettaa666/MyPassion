@@ -232,6 +232,7 @@
             visibility: hidden;
             transition: all 0.4s ease;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .car-modal.active {
@@ -243,13 +244,14 @@
             background-color: #0f0f0f;
             max-width: 900px;
             width: 100%;
-            overflow: hidden;
             position: relative;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             transform: scale(0.95);
             transition: transform 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 5px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .car-modal.active .car-modal-content {
@@ -387,6 +389,20 @@
             .car-specs {
                 grid-template-columns: 1fr 1fr;
             }
+            
+            .car-modal {
+                padding: 10px;
+                align-items: flex-start;
+            }
+            
+            .car-modal-content {
+                margin: 60px auto 20px;
+                max-height: 85vh;
+            }
+            
+            .car-modal-details {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -396,10 +412,32 @@
             
             .car-specs {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
             .car-modal-image {
                 height: 200px;
+            }
+            
+            .car-modal-content {
+                margin: 50px auto 10px;
+            }
+            
+            .car-modal-details {
+                padding: 15px;
+            }
+            
+            .car-modal-details h2 {
+                font-size: 1.6rem;
+            }
+            
+            .car-spec-value {
+                font-size: 1rem;
+            }
+            
+            .car-modal-description {
+                font-size: 0.95rem;
+                line-height: 1.6;
             }
         }
     </style>
@@ -823,6 +861,7 @@
         const galleryItems = document.querySelectorAll('.gallery-item');
         const carModals = document.querySelectorAll('.car-modal');
         const closeButtons = document.querySelectorAll('.car-modal-close');
+        let scrollPosition = 0;
 
         galleryItems.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -831,8 +870,17 @@
                 const modal = document.getElementById(`${carId}-modal`);
                 
                 if (modal) {
+                    // Store current scroll position
+                    scrollPosition = window.pageYOffset;
+                    
+                    // Show modal
                     modal.classList.add('active');
+                    
+                    // Prevent background scrolling
                     document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.style.width = '100%';
                 }
             });
         });
@@ -841,7 +889,15 @@
             carModals.forEach(modal => {
                 modal.classList.remove('active');
             });
+            
+            // Restore scrolling
             document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
         }
 
         closeButtons.forEach(button => {
